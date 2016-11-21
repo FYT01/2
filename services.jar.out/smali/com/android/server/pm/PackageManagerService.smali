@@ -245,7 +245,6 @@
 
 .field private mAppLibInstallDir:Ljava/io/File;
 
-.field private mAppOps:Landroid/app/AppOpsManager;
 
 .field final mAsecInternalPath:Ljava/lang/String;
 
@@ -304,6 +303,16 @@
             "Ljava/util/HashSet",
             "<",
             "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+.field mDisabledComponentsList:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/content/ComponentName;",
             ">;"
         }
     .end annotation
