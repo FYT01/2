@@ -1,0 +1,78 @@
+Manifest-Version: 1.0
+Created-By: 1.7.0_79 (Oracle Corporation)
+
+Name: res/mipmap-mdpi-v4/bt_share.png
+SHA1-Digest: Kyvt4sjDrOKiigZf5ZqPpkZoy7I=
+
+Name: res/mipmap-xxxhdpi-v4/bt_share.png
+SHA1-Digest: pN7PlbhMUziY/NTF/xCkI+tV5Qs=
+
+Name: res/layout/no_transfers.xml
+SHA1-Digest: nLUWzJy3pEyL1VVkBQmpVgJuitY=
+
+Name: res/layout/auth.xml
+SHA1-Digest: FlrXU/dVzmzbLANdfhSLqDXpReA=
+
+Name: res/layout/bluetooth_map_settings_account_item.xml
+SHA1-Digest: 3ZFB+VoD915j76RpPWqfEUmXspA=
+
+Name: res/layout/bluetooth_transfers_page.xml
+SHA1-Digest: nJRPdTvMWdVphgDARMddVHFUdGk=
+
+Name: res/mipmap-hdpi-v4/bt_share.png
+SHA1-Digest: EO8JEx5jdU5Wu/CSEgGgrnNlmHE=
+
+Name: res/layout/file_transfer.xml
+SHA1-Digest: T1QaNVDN2GXtJOZueLt7FcBHwBE=
+
+Name: resources.arsc
+SHA1-Digest: fZkJDQMjmRFrugtd6y8JKFZVEs0=
+
+Name: classes.dex
+SHA1-Digest: VyS9IpL5iYy2FicheeEJB46Xnsc=
+
+Name: res/menu/transferhistorycontextfinished.xml
+SHA1-Digest: ulGOUJSBiEkb4cFJ/hEgWLHUlAA=
+
+Name: res/layout/testactivity_main.xml
+SHA1-Digest: /AmNCytOjdbOfMxOmoVqe8xqLEQ=
+
+Name: res/drawable-xhdpi-v4/bt_incomming_file_notification.png
+SHA1-Digest: Otbi7t6gndZbRSwvx9O1kSTIAto=
+
+Name: res/layout/bluetooth_transfer_item.xml
+SHA1-Digest: tTdqdXxaJ37445ysIfw5I99BPOM=
+
+Name: AndroidManifest.xml
+SHA1-Digest: L/7cTZeOlMq/yOhD+Xcy7r5NShA=
+
+Name: res/layout/confirm_dialog.xml
+SHA1-Digest: OrqLlxbj7CB/jEDdUZik2A7N5lg=
+
+Name: res/menu/transferhistory.xml
+SHA1-Digest: oSDR5sy95CoamD/xCharI6I+lWA=
+
+Name: res/menu/receivedfilescontextfinished.xml
+SHA1-Digest: DqxR4sj3/zu0cmhXMjwaBLt6NW4=
+
+Name: res/layout/bluetooth_map_settings_account_group.xml
+SHA1-Digest: U0gCREh56FtBn5ZqjTKZ7qrmWBA=
+
+Name: res/xml/file_paths.xml
+SHA1-Digest: RJ0IusuOxbcsuV/laBv5calfI7k=
+
+Name: res/layout/bluetooth_map_settings.xml
+SHA1-Digest: KbUzKJTDZv5T9xGbHA1UDkx3ZFI=
+
+Name: res/layout/incoming_dialog.xml
+SHA1-Digest: CkFWfGXtjeyHpXgeMc69tlUQBbI=
+
+Name: res/layout/bt_enabling_progress.xml
+SHA1-Digest: i1yANwCbvL75NA8etOxEgvkoygE=
+
+Name: res/mipmap-xxhdpi-v4/bt_share.png
+SHA1-Digest: RJ/fxK9XXODoQPFE4SQEdomd2QM=
+
+Name: res/mipmap-xhdpi-v4/bt_share.png
+SHA1-Digest: Qr4Hd+4OTVfb6TgjGF0jeKzDS6c=
+
