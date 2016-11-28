@@ -1450,26 +1450,45 @@
 
     if-eq v2, v4, :cond_2
 
-    if-ne v2, v5, :cond_3
+    if-ne v2, v5, :cond_4
 
     :cond_2
-    const/16 v4, 0x12
+    invoke-virtual {v1}, Lcom/android/internal/telephony/gsm/GSMPhone;->getSubId()I
+
+    move-result v4
+
+    invoke-virtual {p0}, Lcom/android/internal/telephony/gsm/GsmConnection;->getAddress()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v4, v6}, Landroid/telephony/PhoneNumberUtils;->isEmergencyNumber(ILjava/lang/String;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3
+
+    move v4, v5
 
     return v4
 
     :cond_3
+    const/16 v4, 0x12
+
+    return v4
+
+    :cond_4
     sget-object v4, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->APPSTATE_READY:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
-    if-eq v3, v4, :cond_4
+    if-eq v3, v4, :cond_5
 
     const/16 v4, 0x13
 
     return v4
 
-    :cond_4
+    :cond_5
     const v4, 0xffff
 
-    if-ne p1, v4, :cond_8
+    if-ne p1, v4, :cond_9
 
     iget-object v4, v1, Lcom/android/internal/telephony/gsm/GSMPhone;->mSST:Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;
 
@@ -1479,24 +1498,9 @@
 
     move-result v4
 
-    if-eqz v4, :cond_5
-
-    const/16 v4, 0x16
-
-    return v4
-
-    :cond_5
-    iget-object v4, v1, Lcom/android/internal/telephony/gsm/GSMPhone;->mSST:Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;
-
-    iget-object v4, v4, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mRestrictedState:Lcom/android/internal/telephony/RestrictedState;
-
-    invoke-virtual {v4}, Lcom/android/internal/telephony/RestrictedState;->isCsEmergencyRestricted()Z
-
-    move-result v4
-
     if-eqz v4, :cond_6
 
-    const/16 v4, 0x18
+    const/16 v4, 0x16
 
     return v4
 
@@ -1505,27 +1509,42 @@
 
     iget-object v4, v4, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mRestrictedState:Lcom/android/internal/telephony/RestrictedState;
 
-    invoke-virtual {v4}, Lcom/android/internal/telephony/RestrictedState;->isCsNormalRestricted()Z
+    invoke-virtual {v4}, Lcom/android/internal/telephony/RestrictedState;->isCsEmergencyRestricted()Z
 
     move-result v4
 
     if-eqz v4, :cond_7
 
-    const/16 v4, 0x17
+    const/16 v4, 0x18
 
     return v4
 
     :cond_7
-    return v6
+    iget-object v4, v1, Lcom/android/internal/telephony/gsm/GSMPhone;->mSST:Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;
+
+    iget-object v4, v4, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mRestrictedState:Lcom/android/internal/telephony/RestrictedState;
+
+    invoke-virtual {v4}, Lcom/android/internal/telephony/RestrictedState;->isCsNormalRestricted()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_8
+
+    const/16 v4, 0x17
+
+    return v4
 
     :cond_8
+    return v6
+
+    :cond_9
     const/16 v4, 0x10
 
-    if-ne p1, v4, :cond_9
+    if-ne p1, v4, :cond_a
 
     return v5
 
-    :cond_9
+    :cond_a
     return v6
 
     nop
