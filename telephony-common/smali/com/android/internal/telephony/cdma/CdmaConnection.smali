@@ -1611,34 +1611,47 @@
 
     if-eq v2, v4, :cond_2
 
-    if-ne v2, v6, :cond_3
+    if-ne v2, v6, :cond_4
 
     :cond_2
-    const/16 v4, 0x12
+    invoke-virtual {p0}, Lcom/android/internal/telephony/cdma/CdmaConnection;->getAddress()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v6}, Landroid/telephony/PhoneNumberUtils;->isEmergencyNumber(Ljava/lang/String;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_3
 
     return v4
 
     :cond_3
+    const/16 v4, 0x12
+
+    return v4
+
+    :cond_4
     iget v4, v1, Lcom/android/internal/telephony/cdma/CDMAPhone;->mCdmaSubscriptionSource:I
 
-    if-nez v4, :cond_4
+    if-nez v4, :cond_5
 
     sget-object v4, Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;->APPSTATE_READY:Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppState;
 
-    if-eq v3, v4, :cond_4
+    if-eq v3, v4, :cond_5
 
     const/16 v4, 0x13
 
     return v4
 
-    :cond_4
+    :cond_5
     const/16 v4, 0x10
 
-    if-ne p1, v4, :cond_5
+    if-ne p1, v4, :cond_6
 
     return v6
 
-    :cond_5
+    :cond_6
     const/16 v4, 0x24
 
     return v4

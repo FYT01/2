@@ -149,7 +149,9 @@
 
     iput-object p6, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mFormat:Ljava/lang/String;
 
-    iput-boolean p11, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mExpectMore:Z
+    const/4 v2, 0x0
+
+    iput-boolean v2, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mExpectMore:Z
 
     const/4 v2, 0x0
 
