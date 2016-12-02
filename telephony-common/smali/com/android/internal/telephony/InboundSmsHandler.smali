@@ -1517,36 +1517,6 @@
 
     invoke-static {v0, v1}, Landroid/telephony/SubscriptionManager;->putPhoneIdAndSubIdExtra(Landroid/content/Intent;I)V
 
-    move-object/from16 v1, p5
-
-    check-cast v1, Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;
-
-    invoke-static {v1}, Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;->-get0(Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;)Ljava/lang/String;
-
-    move-result-object v5
-
-    move-object/from16 v1, p5
-
-    check-cast v1, Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;
-
-    invoke-static {v1}, Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;->-get1(Lcom/android/internal/telephony/InboundSmsHandler$SmsBroadcastReceiver;)[Ljava/lang/String;
-
-    move-result-object v6
-
-    move-object/from16 v1, p0
-
-    move-object/from16 v2, p1
-
-    move-object/from16 v3, p2
-
-    move/from16 v4, p3
-
-    invoke-static/range {v1 .. v6}, Lcom/android/internal/telephony/InboundSmsHandlerInjector;->beforeDispatchIntent(Lcom/android/internal/telephony/InboundSmsHandler;Landroid/content/Intent;Ljava/lang/String;ILjava/lang/String;[Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_6
-
     sget-object v1, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
     move-object/from16 v0, p6

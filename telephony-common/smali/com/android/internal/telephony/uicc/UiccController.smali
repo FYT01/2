@@ -830,7 +830,7 @@
 
     aget-object v3, v3, v4
 
-    invoke-virtual {p0, v7, p2}, Lcom/android/internal/telephony/uicc/UiccController;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+    invoke-virtual {p0, v7}, Lcom/android/internal/telephony/uicc/UiccController;->obtainMessage(I)Landroid/os/Message;
 
     move-result-object v4
 

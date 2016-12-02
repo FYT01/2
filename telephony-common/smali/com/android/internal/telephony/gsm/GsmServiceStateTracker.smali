@@ -2689,20 +2689,6 @@
 
     iput-wide v0, v2, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mZoneTime:J
 
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mPhone:Lcom/android/internal/telephony/gsm/GSMPhone;
-
-    move-object/from16 v26, v0
-
-    invoke-virtual/range {v26 .. v26}, Lcom/android/internal/telephony/gsm/GSMPhone;->getPhoneId()I
-
-    move-result v26
-
-    const/16 v27, 0x1
-
-    invoke-static/range {v26 .. v27}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->setReceivedNitz(IZ)V
-
     :cond_4
     if-eqz v25, :cond_6
 
@@ -8317,7 +8303,7 @@
 
     move/from16 v1, v43
 
-    if-ne v0, v1, :cond_39
+    if-ne v0, v1, :cond_37
 
     move-object/from16 v0, p0
 
@@ -8440,7 +8426,7 @@
 
     move-result v43
 
-    if-nez v43, :cond_3b
+    if-nez v43, :cond_39
 
     move-object/from16 v0, p0
 
@@ -8456,7 +8442,7 @@
 
     move/from16 v43, v0
 
-    if-eqz v43, :cond_3a
+    if-eqz v43, :cond_38
 
     :cond_16
     :goto_11
@@ -8828,7 +8814,7 @@
 
     move-result v43
 
-    if-eqz v43, :cond_34
+    if-eqz v43, :cond_32
 
     move-object/from16 v0, p0
 
@@ -8836,7 +8822,7 @@
 
     move/from16 v43, v0
 
-    if-eqz v43, :cond_34
+    if-eqz v43, :cond_32
 
     move-object/from16 v0, p0
 
@@ -8886,7 +8872,7 @@
 
     iput-boolean v0, v1, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mNeedFixZoneAfterNitz:Z
 
-    if-eqz v41, :cond_38
+    if-eqz v41, :cond_36
 
     new-instance v43, Ljava/lang/StringBuilder;
 
@@ -9175,58 +9161,6 @@
 
     .restart local v40    # "uniqueZones":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/util/TimeZone;>;"
     :cond_31
-    invoke-virtual/range {v40 .. v40}, Ljava/util/ArrayList;->size()I
-
-    move-result v43
-
-    const/16 v44, 0x1
-
-    move/from16 v0, v43
-
-    move/from16 v1, v44
-
-    if-le v0, v1, :cond_33
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mZoneOffset:I
-
-    move/from16 v43, v0
-
-    if-nez v43, :cond_33
-
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mZoneDst:Z
-
-    move/from16 v43, v0
-
-    if-nez v43, :cond_33
-
-    const/16 v43, 0x1
-
-    :goto_16
-    move-object/from16 v0, v29
-
-    move/from16 v1, v43
-
-    invoke-static {v0, v1}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getTimeZoneWithCapitalCity(Ljava/lang/String;Z)Ljava/util/TimeZone;
-
-    move-result-object v41
-
-    if-eqz v41, :cond_32
-
-    invoke-virtual/range {v41 .. v41}, Ljava/util/TimeZone;->getID()Ljava/lang/String;
-
-    move-result-object v43
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v43
-
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->setAndBroadcastNetworkSetTimeZone(Ljava/lang/String;)V
-
-    :cond_32
     new-instance v43, Ljava/lang/StringBuilder;
 
     invoke-direct/range {v43 .. v43}, Ljava/lang/StringBuilder;-><init>()V
@@ -9291,23 +9225,18 @@
 
     goto/16 :goto_13
 
-    :cond_33
-    const/16 v43, 0x0
-
-    goto :goto_16
-
     .end local v35    # "testOneUniqueOffsetPath":Z
     .end local v40    # "uniqueZones":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/util/TimeZone;>;"
     .end local v41    # "zone":Ljava/util/TimeZone;
     .restart local v42    # "zoneName":Ljava/lang/String;
-    :cond_34
+    :cond_32
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mZoneOffset:I
 
     move/from16 v43, v0
 
-    if-nez v43, :cond_37
+    if-nez v43, :cond_35
 
     move-object/from16 v0, p0
 
@@ -9315,15 +9244,15 @@
 
     move/from16 v43, v0
 
-    if-nez v43, :cond_37
+    if-nez v43, :cond_35
 
-    if-eqz v42, :cond_37
+    if-eqz v42, :cond_35
 
     invoke-virtual/range {v42 .. v42}, Ljava/lang/String;->length()I
 
     move-result v43
 
-    if-lez v43, :cond_37
+    if-lez v43, :cond_35
 
     sget-object v43, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->GMT_COUNTRY_CODES:[Ljava/lang/String;
 
@@ -9335,17 +9264,9 @@
 
     move-result v43
 
-    if-gez v43, :cond_37
+    if-gez v43, :cond_35
 
     invoke-static {}, Ljava/util/TimeZone;->getDefault()Ljava/util/TimeZone;
-
-    move-result-object v41
-
-    move-object/from16 v0, v31
-
-    move-object/from16 v1, v41
-
-    invoke-static {v0, v1}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getTimeZoneByMcc(Ljava/lang/String;Ljava/util/TimeZone;)Ljava/util/TimeZone;
 
     move-result-object v41
 
@@ -9356,7 +9277,7 @@
 
     move/from16 v43, v0
 
-    if-eqz v43, :cond_35
+    if-eqz v43, :cond_33
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -9422,7 +9343,7 @@
 
     move-result v43
 
-    if-eqz v43, :cond_36
+    if-eqz v43, :cond_34
 
     sub-long v6, v10, v38
 
@@ -9462,8 +9383,8 @@
     .end local v6    # "adj":J
     .end local v10    # "ctm":J
     .end local v38    # "tzOffset":J
-    :cond_35
-    :goto_17
+    :cond_33
+    :goto_16
     const-string v43, "pollStateDone: using default TimeZone"
 
     move-object/from16 v0, p0
@@ -9476,7 +9397,7 @@
 
     .restart local v10    # "ctm":J
     .restart local v38    # "tzOffset":J
-    :cond_36
+    :cond_34
     move-object/from16 v0, p0
 
     iget-wide v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mSavedTime:J
@@ -9491,12 +9412,12 @@
 
     iput-wide v0, v2, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mSavedTime:J
 
-    goto :goto_17
+    goto :goto_16
 
     .end local v10    # "ctm":J
     .end local v38    # "tzOffset":J
     .end local v41    # "zone":Ljava/util/TimeZone;
-    :cond_37
+    :cond_35
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mZoneOffset:I
@@ -9538,7 +9459,7 @@
 
     goto/16 :goto_14
 
-    :cond_38
+    :cond_36
     const-string v43, "pollStateDone: zone == null"
 
     move-object/from16 v0, p0
@@ -9555,7 +9476,7 @@
     .end local v33    # "prevOperatorNumeric":Ljava/lang/String;
     .end local v41    # "zone":Ljava/util/TimeZone;
     .end local v42    # "zoneName":Ljava/lang/String;
-    :cond_39
+    :cond_37
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mPhone:Lcom/android/internal/telephony/gsm/GSMPhone;
@@ -9568,7 +9489,7 @@
 
     goto/16 :goto_10
 
-    :cond_3a
+    :cond_38
     const/16 v43, 0x1
 
     move/from16 v0, v43
@@ -9625,7 +9546,7 @@
     goto/16 :goto_11
 
     .end local v8    # "check_period":I
-    :cond_3b
+    :cond_39
     const/16 v43, 0x0
 
     move/from16 v0, v43
@@ -10794,10 +10715,6 @@
 
     .local v6, "spn":Ljava/lang/String;
     :goto_3
-    invoke-static/range {p0 .. p0}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getSpn(Lcom/android/internal/telephony/ServiceStateTracker;)Ljava/lang/String;
-
-    move-result-object v6
-
     move-object v8, v6
 
     .local v8, "dataSpn":Ljava/lang/String;
@@ -11227,10 +11144,6 @@
     iget-object v1, v0, Lcom/android/internal/telephony/gsm/GsmServiceStateTracker;->mSS:Landroid/telephony/ServiceState;
 
     invoke-virtual {v1}, Landroid/telephony/ServiceState;->getOperatorAlphaLong()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static/range {p0 .. p0}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getPlmn(Lcom/android/internal/telephony/ServiceStateTracker;)Ljava/lang/String;
 
     move-result-object v4
 

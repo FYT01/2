@@ -1463,19 +1463,6 @@
     return v0
 .end method
 
-.method public getMiuiIccPhoneBookInterfaceManager()Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mActivePhone:Lcom/android/internal/telephony/Phone;
-
-    invoke-interface {v0}, Lcom/android/internal/telephony/Phone;->getMiuiIccPhoneBookInterfaceManager()Lcom/android/internal/telephony/MiuiIccPhoneBookInterfaceManager;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
 .method public getModemActivityInfo(Landroid/os/Message;)V
     .locals 1
     .param p1, "response"    # Landroid/os/Message;

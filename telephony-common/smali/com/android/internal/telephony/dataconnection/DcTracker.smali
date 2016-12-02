@@ -7078,10 +7078,6 @@
     .local v7, "operator":Ljava/lang/String;
     if-eqz v7, :cond_0
 
-    iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTracker;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-
-    invoke-static {v0, v7}, Lcom/android/internal/telephony/dataconnection/DcTrackerInjector;->updateAPNSimOperatorNumeric(Lcom/android/internal/telephony/PhoneBase;Ljava/lang/String;)V
-
     invoke-virtual {v7}, Ljava/lang/String;->isEmpty()Z
 
     move-result v0
@@ -7326,7 +7322,7 @@
 .end method
 
 .method protected createApnList(Landroid/database/Cursor;Lcom/android/internal/telephony/uicc/IccRecords;)Ljava/util/ArrayList;
-    .locals 7
+    .locals 6
     .param p1, "cursor"    # Landroid/database/Cursor;
     .param p2, "r"    # Lcom/android/internal/telephony/uicc/IccRecords;
     .annotation system Ldalvik/annotation/Signature;
@@ -7412,26 +7408,6 @@
     .end local v3    # "result":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/internal/telephony/dataconnection/ApnSetting;>;"
     .restart local v0    # "apn":Lcom/android/internal/telephony/dataconnection/ApnSetting;
     :cond_3
-    iget-object v4, p0, Lcom/android/internal/telephony/dataconnection/DcTracker;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-
-    invoke-virtual {v4}, Lcom/android/internal/telephony/PhoneBase;->getContext()Landroid/content/Context;
-
-    move-result-object v4
-
-    iget-object v5, p0, Lcom/android/internal/telephony/dataconnection/DcTracker;->mPhone:Lcom/android/internal/telephony/PhoneBase;
-
-    invoke-virtual {v5}, Lcom/android/internal/telephony/PhoneBase;->getPhoneId()I
-
-    move-result v5
-
-    iget-object v6, v0, Lcom/android/internal/telephony/dataconnection/ApnSetting;->apn:Ljava/lang/String;
-
-    invoke-static {v4, v5, v6}, Lmiui/telephony/VirtualSimUtils;->isValidApnForMiSim(Landroid/content/Context;ILjava/lang/String;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
     invoke-virtual {v0}, Lcom/android/internal/telephony/dataconnection/ApnSetting;->hasMvnoParams()Z
 
     move-result v4
@@ -13837,7 +13813,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lcom/android/internal/telephony/dataconnection/DcTracker;->mPhone:Lcom/android/internal/telephony/PhoneBase;
 
@@ -13849,7 +13825,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
     invoke-virtual {p0}, Lcom/android/internal/telephony/dataconnection/DcTracker;->startNetStatPoll()V
 
@@ -13859,6 +13835,7 @@
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/dataconnection/DcTracker;->notifyDataConnection(Ljava/lang/String;)V
 
+    :cond_0
     :goto_0
     const-string v0, "2GVoiceCallEnded"
 
@@ -13866,23 +13843,16 @@
 
     return-void
 
-    :cond_0
-    invoke-virtual {p0}, Lcom/android/internal/telephony/dataconnection/DcTracker;->resetPollStats()V
-
-    goto :goto_0
-
     :cond_1
-    invoke-static {p0, v1}, Lcom/android/internal/telephony/dataconnection/DcTrackerInjector;->onVoiceCallChangeForOtherDcTracker(Lcom/android/internal/telephony/dataconnection/DcTracker;Z)V
+    invoke-virtual {p0}, Lcom/android/internal/telephony/dataconnection/DcTracker;->resetPollStats()V
 
     goto :goto_0
 .end method
 
 .method protected onVoiceCallStarted()V
-    .locals 2
+    .locals 1
 
     .prologue
-    const/4 v1, 0x1
-
     const-string v0, "onVoiceCallStarted"
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/dataconnection/DcTracker;->log(Ljava/lang/String;)V

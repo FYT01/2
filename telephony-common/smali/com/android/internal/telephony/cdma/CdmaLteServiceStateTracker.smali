@@ -14,8 +14,6 @@
 
 .field private final mCellInfoLte:Landroid/telephony/CellInfoLte;
 
-.field private mIntentReceiver:Landroid/content/BroadcastReceiver;
-
 .field private mLasteCellIdentityLte:Landroid/telephony/CellIdentityLte;
 
 .field private mNewCellIdentityLte:Landroid/telephony/CellIdentityLte;
@@ -105,7 +103,7 @@
 .end method
 
 .method public constructor <init>(Lcom/android/internal/telephony/cdma/CDMALTEPhone;)V
-    .locals 4
+    .locals 3
     .param p1, "phone"    # Lcom/android/internal/telephony/cdma/CDMALTEPhone;
 
     .prologue
@@ -126,12 +124,6 @@
     invoke-direct {v0}, Landroid/telephony/CellIdentityLte;-><init>()V
 
     iput-object v0, p0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->mLasteCellIdentityLte:Landroid/telephony/CellIdentityLte;
-
-    new-instance v0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker$IntentReceiver;
-
-    invoke-direct {v0, p0}, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker$IntentReceiver;-><init>(Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;)V
-
-    iput-object v0, p0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->mIntentReceiver:Landroid/content/BroadcastReceiver;
 
     iput-object p1, p0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->mCdmaLtePhone:Lcom/android/internal/telephony/cdma/CDMALTEPhone;
 
@@ -169,24 +161,7 @@
 
     invoke-virtual {v0, v1}, Landroid/telephony/CellInfoLte;->setCellIdentity(Landroid/telephony/CellIdentityLte;)V
 
-    new-instance v3, Landroid/content/IntentFilter;
-
-    invoke-direct {v3}, Landroid/content/IntentFilter;-><init>()V
-
-    .local v3, "filter":Landroid/content/IntentFilter;
-    const-string v0, "android.intent.action.LOCALE_CHANGED"
-
-    invoke-virtual {v3, v0}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
-
-    invoke-virtual {p1}, Lcom/android/internal/telephony/cdma/CDMALTEPhone;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->mIntentReceiver:Landroid/content/BroadcastReceiver;
-
-    invoke-virtual {v0, v1, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-
-    const-string/jumbo v0, "CdmaLteServiceStateTracker Constructors"
+    const-string v0, "CdmaLteServiceStateTracker Constructors"
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->log(Ljava/lang/String;)V
 
@@ -600,8 +575,6 @@
     invoke-virtual {v3}, Lcom/android/internal/telephony/cdma/CDMAPhone;->prepareEri()V
 
     invoke-virtual {p0}, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->pollState()V
-
-    invoke-virtual {p0}, Lcom/android/internal/telephony/cdma/CdmaLteServiceStateTracker;->updateSpnDisplay()V
 
     goto :goto_0
 

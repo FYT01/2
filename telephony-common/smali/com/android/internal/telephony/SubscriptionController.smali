@@ -863,7 +863,19 @@
     move-result-object v14
 
     .local v14, "countryIso":Ljava/lang/String;
-    const/16 v15, -0x1
+    const-string v1, "user_network_mode"
+
+    move-object/from16 v0, p1
+
+    invoke-interface {v0, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+
+    move-result v1
+
+    move-object/from16 v0, p1
+
+    invoke-interface {v0, v1}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v15
 
     .local v15, "userNwMode":I
     invoke-static {v3}, Landroid/telephony/SubscriptionInfo;->givePrintableIccid(Ljava/lang/String;)Ljava/lang/String;
@@ -1016,12 +1028,6 @@
     move-object/from16 v0, p0
 
     invoke-direct {v0, v1}, Lcom/android/internal/telephony/SubscriptionController;->logd(Ljava/lang/String;)V
-
-    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_0
 
     move-object/from16 v0, p0
 

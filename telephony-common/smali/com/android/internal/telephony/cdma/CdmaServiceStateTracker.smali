@@ -2004,20 +2004,6 @@
 
     iput-wide v0, v2, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->mZoneTime:J
 
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->mPhone:Lcom/android/internal/telephony/cdma/CDMAPhone;
-
-    move-object/from16 v34, v0
-
-    invoke-virtual/range {v34 .. v34}, Lcom/android/internal/telephony/cdma/CDMAPhone;->getPhoneId()I
-
-    move-result v34
-
-    const/16 v35, 0x1
-
-    invoke-static/range {v34 .. v35}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->setReceivedNitz(IZ)V
-
     :cond_4
     new-instance v34, Ljava/lang/StringBuilder;
 
@@ -4384,16 +4370,11 @@
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    const/16 v4, 0x1cc
+    const-string v5, "00"
 
-    if-ne v1, v4, :cond_5
-
-    const-string v4, "03"
-
-    :goto_1
-    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
@@ -4427,11 +4408,6 @@
     div-int v2, v5, v7
 
     goto :goto_0
-
-    :cond_5
-    const-string v4, "00"
-
-    goto :goto_1
 .end method
 
 .method public getCdmaMin()Ljava/lang/String;
@@ -10466,10 +10442,6 @@
     move-result-object v3
 
     .local v3, "plmn":Ljava/lang/String;
-    invoke-static {p0}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getPlmn(Lcom/android/internal/telephony/ServiceStateTracker;)Ljava/lang/String;
-
-    move-result-object v3
-
     const/4 v2, 0x0
 
     .local v2, "showPlmn":Z
@@ -10612,9 +10584,7 @@
 
     new-instance v7, Landroid/content/Intent;
 
-    invoke-static {p0}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getSpnUpdateActionName(Lcom/android/internal/telephony/ServiceStateTracker;)Ljava/lang/String;
-
-    move-result-object v0
+    const-string v0, "android.provider.Telephony.SPN_STRINGS_UPDATED"
 
     invoke-direct {v7, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 

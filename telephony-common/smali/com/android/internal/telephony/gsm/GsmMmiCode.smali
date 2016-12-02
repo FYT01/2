@@ -1577,7 +1577,7 @@
 .end method
 
 .method private static isShortCode(Ljava/lang/String;Lcom/android/internal/telephony/gsm/GSMPhone;)Z
-    .locals 3
+    .locals 2
     .param p0, "dialString"    # Ljava/lang/String;
     .param p1, "phone"    # Lcom/android/internal/telephony/gsm/GSMPhone;
 
@@ -1602,11 +1602,7 @@
 
     move-result-object v0
 
-    invoke-virtual {p1}, Lcom/android/internal/telephony/gsm/GSMPhone;->getSubId()I
-
-    move-result v2
-
-    invoke-static {v0, v2, p0}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;ILjava/lang/String;)Z
+    invoke-static {v0, p0}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;Ljava/lang/String;)Z
 
     move-result v0
 

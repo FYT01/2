@@ -446,7 +446,7 @@
 .end method
 
 .method private disableDataCallInEmergencyCall(Ljava/lang/String;)V
-    .locals 2
+    .locals 1
     .param p1, "dialString"    # Ljava/lang/String;
 
     .prologue
@@ -456,13 +456,7 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/android/internal/telephony/cdma/CdmaCallTracker;->mPhone:Lcom/android/internal/telephony/cdma/CDMAPhone;
-
-    invoke-virtual {v1}, Lcom/android/internal/telephony/cdma/CDMAPhone;->getSubId()I
-
-    move-result v1
-
-    invoke-static {v0, v1, p1}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;ILjava/lang/String;)Z
+    invoke-static {v0, p1}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;Ljava/lang/String;)Z
 
     move-result v0
 
@@ -1554,13 +1548,7 @@
 
     move-result-object v8
 
-    iget-object v9, p0, Lcom/android/internal/telephony/cdma/CdmaCallTracker;->mPhone:Lcom/android/internal/telephony/cdma/CDMAPhone;
-
-    invoke-virtual {v9}, Lcom/android/internal/telephony/cdma/CDMAPhone;->getSubId()I
-
-    move-result v9
-
-    invoke-static {v8, v9, p1}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;ILjava/lang/String;)Z
+    invoke-static {v8, p1}, Landroid/telephony/PhoneNumberUtils;->isLocalEmergencyNumber(Landroid/content/Context;Ljava/lang/String;)Z
 
     move-result v2
 

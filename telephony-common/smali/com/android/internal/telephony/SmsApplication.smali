@@ -1696,14 +1696,12 @@
 .end method
 
 .method public static shouldWriteMessageForPackage(Ljava/lang/String;Landroid/content/Context;)Z
-    .locals 3
+    .locals 2
     .param p0, "packageName"    # Ljava/lang/String;
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     const/4 v0, 0x1
-
-    const/4 v2, 0x0
 
     invoke-static {}, Landroid/telephony/SmsManager;->getDefault()Landroid/telephony/SmsManager;
 
@@ -1718,25 +1716,14 @@
     return v0
 
     :cond_0
-    invoke-static {p0}, Lcom/android/internal/telephony/SmsApplicationInjector;->isIgnoreSmsStorageApplication(Ljava/lang/String;)Z
+    invoke-static {p1, p0}, Lcom/android/internal/telephony/SmsApplication;->isDefaultSmsApplication(Landroid/content/Context;Ljava/lang/String;)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    move v0, v2
-
-    return v0
-
-    :cond_1
-    invoke-static {p1, p0}, Lcom/android/internal/telephony/SmsApplication;->isDefaultSmsApplication(Landroid/content/Context;Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_2
-
     const/4 v0, 0x0
 
-    :cond_2
+    :cond_1
     return v0
 .end method

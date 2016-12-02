@@ -530,7 +530,11 @@
     move-result-object v18
 
     .local v18, "tm":Landroid/telephony/TelephonyManager;
-    const/4 v6, 0x0
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v15}, Landroid/telephony/TelephonyManager;->getLine1NumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v6
 
     .local v6, "msisdn":Ljava/lang/String;
     sget-object v19, Lcom/android/internal/telephony/SubscriptionInfoUpdater;->mContext:Landroid/content/Context;
@@ -1568,7 +1572,7 @@
 
     array-length v8, v1
 
-    invoke-static {v1, v9, v8}, Lmiui/telephony/IccUtils;->parseIccIdToString([BII)Ljava/lang/String;
+    invoke-static {v1, v9, v8}, Lcom/android/internal/telephony/uicc/IccUtils;->bcdToString([BII)Ljava/lang/String;
 
     move-result-object v8
 
@@ -2535,9 +2539,8 @@
 
     move-result v21
 
-    #if-eqz v21, :cond_1
-    if-nez v21, :cond_1
-    
+    if-eqz v21, :cond_1
+
     const/16 v19, 0x0
 
     .local v19, "update":Z
@@ -3457,7 +3460,17 @@
     check-cast v18, Landroid/telephony/SubscriptionInfo;
 
     .local v18, "temp":Landroid/telephony/SubscriptionInfo;
-    const/4 v9, 0x0
+    invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
+
+    move-result-object v21
+
+    invoke-virtual/range {v18 .. v18}, Landroid/telephony/SubscriptionInfo;->getSubscriptionId()I
+
+    move-result v22
+
+    invoke-virtual/range {v21 .. v22}, Landroid/telephony/TelephonyManager;->getLine1NumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v9
 
     .local v9, "msisdn":Ljava/lang/String;
     if-eqz v9, :cond_17
@@ -3746,9 +3759,9 @@
 
     invoke-static {}, Landroid/telephony/SubscriptionManager;->getDefaultDataSubId()I
 
-    move-result v21
+    move-result v22
 
-    invoke-static/range {v21 .. v21}, Landroid/telephony/SubscriptionManager;->setDefaultDataSubId(I)V
+    invoke-virtual/range {v21 .. v22}, Landroid/telephony/SubscriptionManager;->setDefaultDataSubId(I)V
 
     invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;
 
