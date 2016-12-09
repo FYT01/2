@@ -191,42 +191,14 @@
 .end method
 
 .method private static supportEncrypt()Z
-    .locals 3
+    .locals 1
 
-    .prologue
     const/4 v0, 0x0
 
     .line 44
-    invoke-static {}, Lcom/miui/securityspace/spacemanager/SpaceManagerFactory;->isMiDevice()Z
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
     .line 50
-    :cond_0
-    :goto_0
     return v0
 
     .line 47
-    :cond_1
-    sget-boolean v1, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z
-
-    if-eqz v1, :cond_2
-
-    sget-object v1, Lcom/miui/securityspace/spacemanager/SpaceManagerFactory;->DEVICE_NOT_SUPPORT_ENCRYPT:Ljava/util/List;
-
-    sget-object v2, Lmiui/os/Build;->DEVICE:Ljava/lang/String;
-
-    invoke-interface {v1, v2}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
     .line 50
-    :cond_2
-    const/4 v0, 0x1
-
-    goto :goto_0
 .end method
