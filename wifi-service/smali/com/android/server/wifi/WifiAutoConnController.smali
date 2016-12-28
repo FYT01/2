@@ -142,10 +142,6 @@
     invoke-virtual {p0}, Lcom/android/server/wifi/WifiAutoConnController;->registerConnectivityChangedReceiver()V
 
     :cond_0
-    new-instance v0, Lcom/android/server/wifi/WifiApManager;
-
-    invoke-direct {v0, p2, p3}, Lcom/android/server/wifi/WifiApManager;-><init>(Landroid/content/Context;Landroid/os/Handler;)V
-
     return-void
 .end method
 
