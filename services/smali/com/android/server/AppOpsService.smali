@@ -2348,7 +2348,7 @@
     .prologue
     if-ltz p1, :cond_1
 
-    const/16 v0, 0x3f
+    const/16 v0, 0x45
 
     if-ge p1, v0, :cond_1
 
@@ -8549,7 +8549,7 @@
     .local v1, "opRestrictions":[Z
     if-nez v1, :cond_0
 
-    const/16 v3, 0x3f
+    const/16 v3, 0x45
 
     new-array v1, v3, [Z
 
