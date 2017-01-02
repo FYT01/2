@@ -267,7 +267,7 @@
 
 .field public static final TAG:Ljava/lang/String; = "AppOps"
 
-.field public static final _NUM_OP:I = 0x3f
+.field public static final _NUM_OP:I = 0x45
 
 .field private static sOpAllowSystemRestrictionBypass:[Z
 
